@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../utils/constants.dart';
+import '../../utils/helpers.dart';
+import '../../utils/routes.dart';
 import '../../services/firestore_service.dart';
 import '../../models/user_model.dart';
 
@@ -44,7 +46,15 @@ class _ManageTechniciansScreenState extends State<ManageTechniciansScreen> {
         actions: [
           IconButton(
             icon: const Icon(Icons.add),
-            onPressed: () {},
+            onPressed: () async {
+              final result = await Navigator.pushNamed(
+                context,
+                AppRoutes.addTechnician,
+              );
+              if (result == true) {
+                _loadTechnicians();
+              }
+            },
           ),
         ],
       ),
@@ -93,30 +103,125 @@ class _ManageTechniciansScreenState extends State<ManageTechniciansScreen> {
                               fontWeight: FontWeight.w600,
                             ),
                           ),
-                          subtitle: Text(
-                            technician.phone,
-                            style: AppTextStyles.bodySmall,
-                          ),
-                          trailing: Container(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: AppSpacing.sm,
-                              vertical: AppSpacing.xs,
-                            ),
-                            decoration: BoxDecoration(
-                              color: technician.isActive
-                                  ? AppColors.success.withOpacity(0.1)
-                                  : AppColors.error.withOpacity(0.1),
-                              borderRadius: BorderRadius.circular(AppBorderRadius.sm),
-                            ),
-                            child: Text(
-                              technician.isActive ? 'Active' : 'Inactive',
-                              style: AppTextStyles.bodySmall.copyWith(
-                                color: technician.isActive
-                                    ? AppColors.success
-                                    : AppColors.error,
-                                fontWeight: FontWeight.w600,
+                          subtitle: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                technician.phone,
+                                style: AppTextStyles.bodySmall,
                               ),
-                            ),
+                              if (technician.email.isNotEmpty)
+                                Text(
+                                  technician.email,
+                                  style: AppTextStyles.bodySmall,
+                                ),
+                            ],
+                          ),
+                          trailing: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Container(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: AppSpacing.sm,
+                                  vertical: AppSpacing.xs,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: technician.isActive
+                                      ? AppColors.success.withOpacity(0.1)
+                                      : AppColors.error.withOpacity(0.1),
+                                  borderRadius: BorderRadius.circular(AppBorderRadius.sm),
+                                ),
+                                child: Text(
+                                  technician.isActive ? 'Active' : 'Inactive',
+                                  style: AppTextStyles.bodySmall.copyWith(
+                                    color: technician.isActive
+                                        ? AppColors.success
+                                        : AppColors.error,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                              ),
+                              PopupMenuButton(
+                                itemBuilder: (context) => [
+                                  PopupMenuItem(
+                                    value: 'toggle',
+                                    child: Row(
+                                      children: [
+                                        Icon(
+                                          technician.isActive
+                                              ? Icons.block
+                                              : Icons.check_circle,
+                                          size: 20,
+                                        ),
+                                        const SizedBox(width: 8),
+                                        Text(technician.isActive
+                                            ? 'Deactivate'
+                                            : 'Activate'),
+                                      ],
+                                    ),
+                                  ),
+                                  const PopupMenuItem(
+                                    value: 'delete',
+                                    child: Row(
+                                      children: [
+                                        Icon(Icons.delete,
+                                            size: 20, color: AppColors.error),
+                                        SizedBox(width: 8),
+                                        Text('Delete',
+                                            style: TextStyle(
+                                                color: AppColors.error)),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                                onSelected: (value) async {
+                                  if (value == 'toggle') {
+                                    try {
+                                      await _firestoreService
+                                          .updateTechnicianStatus(
+                                        technician.id,
+                                        !technician.isActive,
+                                      );
+                                      Helpers.showSnackBar(
+                                        context,
+                                        'Technician ${technician.isActive ? "deactivated" : "activated"} successfully',
+                                      );
+                                      _loadTechnicians();
+                                    } catch (e) {
+                                      Helpers.showSnackBar(
+                                        context,
+                                        'Failed to update status',
+                                        isError: true,
+                                      );
+                                    }
+                                  } else if (value == 'delete') {
+                                    Helpers.showConfirmDialog(
+                                      context: context,
+                                      title: 'Delete Technician',
+                                      message:
+                                          'Are you sure you want to delete ${technician.name}?',
+                                      onConfirm: () async {
+                                        try {
+                                          await _firestoreService
+                                              .deleteTechnician(technician.id);
+                                          Helpers.showSnackBar(
+                                            context,
+                                            'Technician deleted successfully',
+                                          );
+                                          _loadTechnicians();
+                                        } catch (e) {
+                                          Helpers.showSnackBar(
+                                            context,
+                                            'Failed to delete technician',
+                                            isError: true,
+                                          );
+                                        }
+                                      },
+                                    );
+                                  }
+                                },
+                              ),
+                            ],
                           ),
                           onTap: () {},
                         ),
