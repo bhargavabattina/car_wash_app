@@ -37,6 +37,12 @@ import 'screens/technician/earnings_screen.dart';
 import 'screens/admin/admin_dashboard_screen.dart';
 import 'screens/admin/all_bookings_screen.dart';
 import 'screens/admin/manage_technicians_screen.dart';
+import 'screens/admin/add_technician_screen.dart';
+import 'screens/admin/manage_services_screen.dart';
+import 'screens/admin/manage_pricing_screen.dart';
+import 'screens/admin/payments_report_screen.dart';
+import 'screens/admin/customer_list_screen.dart';
+import 'screens/admin/offers_coupons_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -115,6 +121,12 @@ class MyApp extends StatelessWidget {
           AppRoutes.adminDashboard: (context) => const AdminDashboardScreen(),
           AppRoutes.allBookings: (context) => const AllBookingsScreen(),
           AppRoutes.manageTechnicians: (context) => const ManageTechniciansScreen(),
+          AppRoutes.addTechnician: (context) => const AddTechnicianScreen(),
+          AppRoutes.manageServices: (context) => const ManageServicesScreen(),
+          AppRoutes.managePricing: (context) => const ManagePricingScreen(),
+          AppRoutes.paymentsReport: (context) => const PaymentsReportScreen(),
+          AppRoutes.customerList: (context) => const CustomerListScreen(),
+          AppRoutes.offersAndCoupons: (context) => const OffersAndCouponsScreen(),
         },
       ),
     );

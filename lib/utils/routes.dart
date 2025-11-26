@@ -35,6 +35,7 @@ class AppRoutes {
   static const String adminDashboard = '/admin-dashboard';
   static const String allBookings = '/all-bookings';
   static const String manageTechnicians = '/manage-technicians';
+  static const String addTechnician = '/add-technician';
   static const String manageServices = '/manage-services';
   static const String managePricing = '/manage-pricing';
   static const String paymentsReport = '/payments-report';

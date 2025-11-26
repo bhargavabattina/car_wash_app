@@ -93,6 +93,25 @@ class FirestoreService {
     return null;
   }
 
+  Future<List<ServiceModel>> getAllServices() async {
+    QuerySnapshot snapshot = await _db.collection('services').get();
+    return snapshot.docs
+        .map((doc) => ServiceModel.fromJson(doc.data() as Map<String, dynamic>))
+        .toList();
+  }
+
+  Future<void> createService(ServiceModel service) async {
+    await _db.collection('services').doc(service.id).set(service.toJson());
+  }
+
+  Future<void> updateService(String serviceId, Map<String, dynamic> data) async {
+    await _db.collection('services').doc(serviceId).update(data);
+  }
+
+  Future<void> deleteService(String serviceId) async {
+    await _db.collection('services').doc(serviceId).delete();
+  }
+
   // Booking Operations
   Future<void> createBooking(BookingModel booking) async {
     await _db.collection('bookings').doc(booking.id).set(booking.toJson());
@@ -207,5 +226,17 @@ class FirestoreService {
     return snapshot.docs
         .map((doc) => UserModel.fromJson(doc.data() as Map<String, dynamic>))
         .toList();
+  }
+
+  Future<void> createTechnician(UserModel technician) async {
+    await _db.collection('users').doc(technician.id).set(technician.toJson());
+  }
+
+  Future<void> updateTechnicianStatus(String technicianId, bool isActive) async {
+    await _db.collection('users').doc(technicianId).update({'isActive': isActive});
+  }
+
+  Future<void> deleteTechnician(String technicianId) async {
+    await _db.collection('users').doc(technicianId).delete();
   }
 }
