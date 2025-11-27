@@ -55,7 +55,7 @@ class FirestoreService {
         .where('userId', isEqualTo: userId)
         .snapshots()
         .map((snapshot) => snapshot.docs
-            .map((doc) => CarModel.fromJson(doc.data() as Map<String, dynamic>))
+            .map((doc) => CarModel.fromJson(doc.data()))
             .toList());
   }
 
@@ -81,7 +81,7 @@ class FirestoreService {
         .where('isActive', isEqualTo: true)
         .snapshots()
         .map((snapshot) => snapshot.docs
-            .map((doc) => ServiceModel.fromJson(doc.data() as Map<String, dynamic>))
+            .map((doc) => ServiceModel.fromJson(doc.data()))
             .toList());
   }
 
@@ -157,7 +157,7 @@ class FirestoreService {
         .orderBy('createdAt', descending: true)
         .snapshots()
         .map((snapshot) => snapshot.docs
-            .map((doc) => BookingModel.fromJson(doc.data() as Map<String, dynamic>))
+            .map((doc) => BookingModel.fromJson(doc.data()))
             .toList());
   }
 
@@ -180,7 +180,7 @@ class FirestoreService {
         .orderBy('scheduledDate', descending: false)
         .snapshots()
         .map((snapshot) => snapshot.docs
-            .map((doc) => BookingModel.fromJson(doc.data() as Map<String, dynamic>))
+            .map((doc) => BookingModel.fromJson(doc.data()))
             .toList());
   }
 
@@ -201,7 +201,7 @@ class FirestoreService {
         .orderBy('createdAt', descending: true)
         .snapshots()
         .map((snapshot) => snapshot.docs
-            .map((doc) => BookingModel.fromJson(doc.data() as Map<String, dynamic>))
+            .map((doc) => BookingModel.fromJson(doc.data()))
             .toList());
   }
 

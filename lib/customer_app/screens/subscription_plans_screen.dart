@@ -18,7 +18,7 @@ class SubscriptionPlansScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               'Choose Your Plan',
               style: AppTextStyles.heading1,
             ),

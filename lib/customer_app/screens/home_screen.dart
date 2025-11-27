@@ -93,7 +93,7 @@ class _HomeScreenState extends State<HomeScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('Your Cars', style: AppTextStyles.heading2),
+                  const Text('Your Cars', style: AppTextStyles.heading2),
                   TextButton.icon(
                     onPressed: () {
                       Navigator.pushNamed(context, AppRoutes.addCar).then((_) => _loadData());
@@ -141,7 +141,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   },
                 ),
               const SizedBox(height: AppSpacing.lg),
-              Text('Our Services', style: AppTextStyles.heading2),
+              const Text('Our Services', style: AppTextStyles.heading2),
               const SizedBox(height: AppSpacing.md),
               ListView.builder(
                 shrinkWrap: true,

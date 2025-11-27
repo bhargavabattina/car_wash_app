@@ -98,7 +98,7 @@ class _SelectLocationScreenState extends State<SelectLocationScreen> {
                     },
                   ),
                   const SizedBox(height: AppSpacing.lg),
-                  Text(
+                  const Text(
                     'Saved Addresses',
                     style: AppTextStyles.heading3,
                   ),

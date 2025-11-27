@@ -23,21 +23,17 @@ class _UploadPhotosScreenState extends State<UploadPhotosScreen> {
 
   Future<void> _pickBeforeImages() async {
     final pickedFiles = await _picker.pickMultiImage();
-    if (pickedFiles != null) {
-      setState(() {
-        _beforePhotos = pickedFiles.map((file) => File(file.path)).toList();
-      });
+    setState(() {
+      _beforePhotos = pickedFiles.map((file) => File(file.path)).toList();
+    });
     }
-  }
 
   Future<void> _pickAfterImages() async {
     final pickedFiles = await _picker.pickMultiImage();
-    if (pickedFiles != null) {
-      setState(() {
-        _afterPhotos = pickedFiles.map((file) => File(file.path)).toList();
-      });
+    setState(() {
+      _afterPhotos = pickedFiles.map((file) => File(file.path)).toList();
+    });
     }
-  }
 
   Future<void> _submitAndComplete(String bookingId) async {
     if (_beforePhotos.isEmpty || _afterPhotos.isEmpty) {
@@ -61,7 +57,7 @@ class _UploadPhotosScreenState extends State<UploadPhotosScreen> {
       await bookingProvider.uploadAfterPhotos(bookingId, _afterPhotos);
       await bookingProvider.updateBookingStatus(bookingId, 'completed');
 
-      final booking = await bookingProvider.currentBooking;
+      final booking = bookingProvider.currentBooking;
       if (booking != null && booking.technicianId != null) {
         await technicianProvider.loadTechnicianJobs(booking.technicianId!);
       }
@@ -106,7 +102,7 @@ class _UploadPhotosScreenState extends State<UploadPhotosScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     'Before Wash Photos',
                     style: AppTextStyles.heading2,
                   ),
@@ -180,7 +176,7 @@ class _UploadPhotosScreenState extends State<UploadPhotosScreen> {
                       ],
                     ),
                   const SizedBox(height: AppSpacing.xl),
-                  Text(
+                  const Text(
                     'After Wash Photos',
                     style: AppTextStyles.heading2,
                   ),

@@ -154,15 +154,15 @@ class _ManagePricingScreenState extends State<ManagePricingScreen> {
                       children: [
                         Card(
                           color: AppColors.primary.withOpacity(0.1),
-                          child: Padding(
-                            padding: const EdgeInsets.all(AppSpacing.md),
+                          child: const Padding(
+                            padding: EdgeInsets.all(AppSpacing.md),
                             child: Row(
                               children: [
-                                const Icon(
+                                Icon(
                                   Icons.info_outline,
                                   color: AppColors.primary,
                                 ),
-                                const SizedBox(width: AppSpacing.sm),
+                                SizedBox(width: AppSpacing.sm),
                                 Expanded(
                                   child: Text(
                                     'Tap on any service to update its price',
@@ -174,7 +174,7 @@ class _ManagePricingScreenState extends State<ManagePricingScreen> {
                           ),
                         ),
                         const SizedBox(height: AppSpacing.lg),
-                        Text(
+                        const Text(
                           'Service Pricing',
                           style: AppTextStyles.heading2,
                         ),
@@ -223,7 +223,7 @@ class _ManagePricingScreenState extends State<ManagePricingScreen> {
                           );
                         }),
                         const SizedBox(height: AppSpacing.xl),
-                        Text(
+                        const Text(
                           'Car Type Multipliers',
                           style: AppTextStyles.heading2,
                         ),

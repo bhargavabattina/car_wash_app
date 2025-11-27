@@ -134,7 +134,7 @@ class _OffersAndCouponsScreenState extends State<OffersAndCouponsScreen> {
               ),
             ),
             const SizedBox(height: AppSpacing.lg),
-            Text(
+            const Text(
               'All Coupons',
               style: AppTextStyles.heading2,
             ),

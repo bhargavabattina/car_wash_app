@@ -50,7 +50,7 @@ class ServiceModel {
   }
 
   String get priceDisplay => '₹${basePrice.toStringAsFixed(0)}';
-  String get durationDisplay => '${estimatedMinutes} mins';
+  String get durationDisplay => '$estimatedMinutes mins';
 
   ServiceModel copyWith({
     String? id,

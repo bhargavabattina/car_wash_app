@@ -32,7 +32,7 @@ class BookingConfirmationScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: AppSpacing.xl),
-              Text(
+              const Text(
                 '🎉 Booking Confirmed!',
                 style: AppTextStyles.heading1,
                 textAlign: TextAlign.center,
@@ -54,7 +54,7 @@ class BookingConfirmationScreen extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
+                          const Text(
                             'Booking ID',
                             style: AppTextStyles.bodyMedium,
                           ),
@@ -70,7 +70,7 @@ class BookingConfirmationScreen extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
+                          const Text(
                             'Estimated Time',
                             style: AppTextStyles.bodyMedium,
                           ),

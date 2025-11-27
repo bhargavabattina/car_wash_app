@@ -15,12 +15,12 @@ class AdminSidebar extends StatelessWidget {
     return Container(
       width: 280,
       decoration: BoxDecoration(
-        gradient: LinearGradient(
+        gradient: const LinearGradient(
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
           colors: [
-            const Color(0xFF2196F3),
-            const Color(0xFF1976D2),
+            Color(0xFF2196F3),
+            Color(0xFF1976D2),
           ],
         ),
         boxShadow: [
@@ -196,10 +196,10 @@ class AdminSidebar extends StatelessWidget {
           const SizedBox(height: 12),
           Row(
             children: [
-              CircleAvatar(
+              const CircleAvatar(
                 radius: 20,
                 backgroundColor: Colors.white,
-                child: const Icon(
+                child: Icon(
                   Icons.person,
                   color: Color(0xFF2196F3),
                 ),

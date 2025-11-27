@@ -40,7 +40,7 @@ class _SelectDateTimeScreenState extends State<SelectDateTimeScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     'Select Date',
                     style: AppTextStyles.heading2,
                   ),
@@ -111,7 +111,7 @@ class _SelectDateTimeScreenState extends State<SelectDateTimeScreen> {
                     ),
                   ),
                   const SizedBox(height: AppSpacing.lg),
-                  Text(
+                  const Text(
                     'Available Time Slots',
                     style: AppTextStyles.heading2,
                   ),

@@ -70,7 +70,7 @@ class EarningsScreen extends StatelessWidget {
                             ),
                           ),
                           const SizedBox(height: AppSpacing.xs),
-                          Text(
+                          const Text(
                             'Completed',
                             style: AppTextStyles.bodySmall,
                           ),
@@ -99,7 +99,7 @@ class EarningsScreen extends StatelessWidget {
                             ),
                           ),
                           const SizedBox(height: AppSpacing.xs),
-                          Text(
+                          const Text(
                             'Rating',
                             style: AppTextStyles.bodySmall,
                           ),
@@ -111,7 +111,7 @@ class EarningsScreen extends StatelessWidget {
               ],
             ),
             const SizedBox(height: AppSpacing.lg),
-            Text(
+            const Text(
               'Recent Earnings',
               style: AppTextStyles.heading2,
             ),

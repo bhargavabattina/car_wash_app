@@ -98,7 +98,7 @@ class JobDetailsScreen extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
+                          const Text(
                             'Service Amount',
                             style: AppTextStyles.heading3,
                           ),

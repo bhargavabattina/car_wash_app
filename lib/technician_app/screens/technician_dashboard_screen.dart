@@ -129,7 +129,7 @@ class _TechnicianDashboardScreenState extends State<TechnicianDashboardScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
+                        const Text(
                           'New Jobs',
                           style: AppTextStyles.heading2,
                         ),

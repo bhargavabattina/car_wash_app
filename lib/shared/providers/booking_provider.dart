@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import '../models/booking_model.dart';
 import '../models/service_model.dart';
-import '../models/car_model.dart';
 import '../services/firestore_service.dart';
 import '../services/storage_service.dart';
 import 'dart:io';

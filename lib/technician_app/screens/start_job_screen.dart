@@ -68,7 +68,7 @@ class _StartJobScreenState extends State<StartJobScreen> {
               color: AppColors.primary,
             ),
             const SizedBox(height: AppSpacing.xl),
-            Text(
+            const Text(
               'Ready to Start?',
               style: AppTextStyles.heading1,
             ),

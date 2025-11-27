@@ -67,7 +67,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(height: AppSpacing.xl),
-                  Text(
+                  const Text(
                     'Welcome Back 👋',
                     style: AppTextStyles.heading1,
                   ),
@@ -107,7 +107,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     isLoading: authProvider.isLoading,
                   ),
                   const SizedBox(height: AppSpacing.lg),
-                  Center(
+                  const Center(
                     child: Text(
                       AppConstants.termsAndConditions,
                       style: AppTextStyles.bodySmall,

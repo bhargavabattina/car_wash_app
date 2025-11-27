@@ -65,7 +65,7 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(height: AppSpacing.xl),
-                Text(
+                const Text(
                   'Verify OTP',
                   style: AppTextStyles.heading1,
                 ),

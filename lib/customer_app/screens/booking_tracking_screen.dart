@@ -65,7 +65,7 @@ class _BookingTrackingScreenState extends State<BookingTrackingScreen> {
                 ),
                 if (booking.technicianId != null) ...[
                   const SizedBox(height: AppSpacing.lg),
-                  Text(
+                  const Text(
                     'Technician Info',
                     style: AppTextStyles.heading2,
                   ),
@@ -96,7 +96,7 @@ class _BookingTrackingScreenState extends State<BookingTrackingScreen> {
                 ],
                 const SizedBox(height: AppSpacing.lg),
                 if (booking.beforePhotos.isNotEmpty) ...[
-                  Text(
+                  const Text(
                     'Before Photos',
                     style: AppTextStyles.heading2,
                   ),
@@ -122,7 +122,7 @@ class _BookingTrackingScreenState extends State<BookingTrackingScreen> {
                   const SizedBox(height: AppSpacing.lg),
                 ],
                 if (booking.afterPhotos.isNotEmpty) ...[
-                  Text(
+                  const Text(
                     'After Photos',
                     style: AppTextStyles.heading2,
                   ),
