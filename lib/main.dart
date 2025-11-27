@@ -1,6 +1,5 @@
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
 
 import 'admin_web/admin_app.dart';
 import 'customer_app/customer_app.dart';

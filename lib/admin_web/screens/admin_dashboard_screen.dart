@@ -115,33 +115,33 @@ class _AdminDashboardScreenState extends State<AdminDashboardScreen> {
       mainAxisSpacing: 20,
       crossAxisSpacing: 20,
       childAspectRatio: 1.5,
-      children: [
+      children: const [
         StatCard(
           title: 'Total Revenue',
           value: '₹1.25L',
           icon: Icons.monetization_on,
-          color: const Color(0xFF4CAF50),
+          color: Color(0xFF4CAF50),
           subtitle: '+12.5%',
         ),
         StatCard(
           title: 'Total Bookings',
           value: '342',
           icon: Icons.event_note,
-          color: const Color(0xFF2196F3),
+          color: Color(0xFF2196F3),
           subtitle: '+8.2%',
         ),
         StatCard(
           title: 'Technicians',
           value: '15',
           icon: Icons.people,
-          color: const Color(0xFFFF9800),
+          color: Color(0xFFFF9800),
           subtitle: '3 active',
         ),
         StatCard(
           title: 'Subscriptions',
           value: '48',
           icon: Icons.card_membership,
-          color: const Color(0xFF9C27B0),
+          color: Color(0xFF9C27B0),
           subtitle: '+15.3%',
         ),
       ],

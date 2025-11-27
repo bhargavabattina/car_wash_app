@@ -115,7 +115,7 @@ class _PaymentsReportScreenState extends State<PaymentsReportScreen> {
                       ),
                     ),
                     const SizedBox(height: AppSpacing.lg),
-                    Text(
+                    const Text(
                       'Payment Method Breakdown',
                       style: AppTextStyles.heading2,
                     ),
@@ -222,7 +222,7 @@ class _PaymentsReportScreenState extends State<PaymentsReportScreen> {
                         );
                       }),
                     const SizedBox(height: AppSpacing.lg),
-                    Text(
+                    const Text(
                       'Recent Transactions',
                       style: AppTextStyles.heading2,
                     ),

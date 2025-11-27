@@ -109,7 +109,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
+                          const Text(
                             'Total Amount',
                             style: AppTextStyles.heading3,
                           ),
@@ -124,7 +124,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                     ),
                   ),
                   const SizedBox(height: AppSpacing.lg),
-                  Text(
+                  const Text(
                     'Payment Options',
                     style: AppTextStyles.heading2,
                   ),

@@ -33,7 +33,7 @@ class BookingSummaryScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     'Booking Summary',
                     style: AppTextStyles.heading2,
                   ),
@@ -78,7 +78,7 @@ class BookingSummaryScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: AppSpacing.lg),
-                  Text(
+                  const Text(
                     'Price Details',
                     style: AppTextStyles.heading2,
                   ),
@@ -91,7 +91,7 @@ class BookingSummaryScreen extends StatelessWidget {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text(
+                              const Text(
                                 'Service Charge',
                                 style: AppTextStyles.bodyMedium,
                               ),
@@ -105,7 +105,7 @@ class BookingSummaryScreen extends StatelessWidget {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text(
+                              const Text(
                                 'Total Amount',
                                 style: AppTextStyles.heading3,
                               ),

@@ -71,7 +71,7 @@ class ServiceDetailsScreen extends StatelessWidget {
                           style: AppTextStyles.bodyLarge,
                         ),
                         const SizedBox(height: AppSpacing.lg),
-                        Text(
+                        const Text(
                           'Includes:',
                           style: AppTextStyles.heading3,
                         ),

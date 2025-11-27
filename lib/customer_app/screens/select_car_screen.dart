@@ -57,7 +57,7 @@ class _SelectCarScreenState extends State<SelectCarScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
+                        const Text(
                           'Select Car',
                           style: AppTextStyles.heading2,
                         ),
@@ -74,7 +74,7 @@ class _SelectCarScreenState extends State<SelectCarScreen> {
                                     color: AppColors.textSecondary,
                                   ),
                                   const SizedBox(height: AppSpacing.sm),
-                                  Text(
+                                  const Text(
                                     'No cars added yet',
                                     style: AppTextStyles.bodyMedium,
                                   ),
