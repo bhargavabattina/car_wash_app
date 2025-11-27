@@ -2,6 +2,10 @@
 
 A comprehensive on-demand car wash application built with Flutter and Firebase.
 
+## 🚀 **NEW USER? [START HERE](START_HERE.md)**
+
+If this is your first time setting up the project, please read **[START_HERE.md](START_HERE.md)** for step-by-step setup instructions.
+
 ## Features
 
 ### Customer App
@@ -41,36 +45,32 @@ A comprehensive on-demand car wash application built with Flutter and Firebase.
 ## Project Structure
 
 ```
-lib/
-├── main.dart
-├── models/
-│   ├── user_model.dart
-│   ├── booking_model.dart
-│   ├── service_model.dart
-│   └── car_model.dart
-├── providers/
-│   ├── auth_provider.dart
-│   ├── booking_provider.dart
-│   └── technician_provider.dart
-├── services/
-│   ├── firebase_auth_service.dart
-│   ├── firestore_service.dart
-│   ├── storage_service.dart
-│   └── notification_service.dart
-├── screens/
-│   ├── customer/
-│   ├── technician/
-│   └── admin/
-├── widgets/
-│   ├── custom_button.dart
-│   ├── custom_input.dart
-│   ├── service_card.dart
-│   ├── car_card.dart
-│   └── booking_card.dart
-└── utils/
-    ├── constants.dart
-    ├── helpers.dart
-    └── routes.dart
+car_wash_app/
+├── android/                      ← Android platform (add with platform setup)
+├── ios/                          ← iOS platform (add with platform setup)
+├── web/                          ← Web platform (add with platform setup)
+├── lib/
+│   ├── main.dart                 ← Platform detection & routing
+│   ├── admin_web/                ← Web admin dashboard
+│   │   ├── admin_app.dart
+│   │   ├── screens/
+│   │   └── widgets/
+│   ├── customer_app/             ← Customer mobile app
+│   │   ├── customer_app.dart
+│   │   └── screens/
+│   ├── technician_app/           ← Technician mobile app
+│   │   ├── technician_app.dart
+│   │   └── screens/
+│   └── shared/                   ← Shared code
+│       ├── models/
+│       ├── providers/
+│       ├── services/
+│       ├── utils/
+│       └── widgets/
+├── START_HERE.md                 ← Setup guide (start here!)
+├── PLATFORM_SETUP.md             ← Add Android/iOS/Web folders
+├── SETUP_GUIDE.md                ← Firebase & Maps configuration
+└── SETUP_CHECKLIST.md            ← Track setup progress
 ```
 
 ## Getting Started
@@ -79,30 +79,59 @@ lib/
 
 - Flutter SDK (>=3.0.0)
 - Firebase account
+- Google Cloud account (for Maps API)
 - Android Studio / VS Code
 
-### Installation
+### Quick Setup
 
-1. Clone the repository
+**⚠️ Important: Follow steps in this order!**
+
+1. **Clone the repository**
 ```bash
 git clone <repository-url>
 cd car_wash_app
 ```
 
-2. Install dependencies
+2. **Add platform support** (Android, iOS, Web folders)
+```bash
+# Windows
+add_platforms.bat
+
+# macOS/Linux
+./add_platforms.sh
+
+# Or manually
+flutter create --platforms=android,ios,web .
+```
+
+3. **Install dependencies**
 ```bash
 flutter pub get
 ```
 
-3. Configure Firebase
-- Create a new Firebase project
-- Download `google-services.json` (Android) and `GoogleService-Info.plist` (iOS)
-- Place them in the respective platform directories
+4. **Configure Firebase & Google Maps**
+   - Follow **[SETUP_GUIDE.md](SETUP_GUIDE.md)** for detailed configuration
+   - Use **[SETUP_CHECKLIST.md](SETUP_CHECKLIST.md)** to track progress
 
-4. Run the app
+5. **Run the app**
 ```bash
-flutter run
+# Android
+flutter run -d android
+
+# iOS (macOS only)
+flutter run -d ios
+
+# Web
+flutter run -d chrome
 ```
+
+### 📚 Setup Documentation
+
+- **[START_HERE.md](START_HERE.md)** - Overview and setup order
+- **[PLATFORM_SETUP.md](PLATFORM_SETUP.md)** - Add Android/iOS/Web folders
+- **[SETUP_GUIDE.md](SETUP_GUIDE.md)** - Complete Firebase & Maps setup
+- **[SETUP_CHECKLIST.md](SETUP_CHECKLIST.md)** - Track your progress
+- **[ARCHITECTURE.md](ARCHITECTURE.md)** - Project architecture details
 
 ## Firebase Setup
 
