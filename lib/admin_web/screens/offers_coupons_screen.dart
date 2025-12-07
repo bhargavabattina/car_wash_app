@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../../shared/utils/constants.dart';
-import '../../shared/widgets/custom_button.dart';
 
 class OffersAndCouponsScreen extends StatefulWidget {
   const OffersAndCouponsScreen({super.key});

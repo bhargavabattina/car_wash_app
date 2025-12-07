@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../shared/utils/constants.dart';
 import '../../shared/utils/helpers.dart';
-import '../../shared/widgets/custom_button.dart';
 import '../../shared/widgets/custom_input.dart';
 import '../../shared/services/firestore_service.dart';
 import '../../shared/models/service_model.dart';
@@ -153,7 +152,7 @@ class _ManagePricingScreenState extends State<ManagePricingScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Card(
-                          color: AppColors.primary.withOpacity(0.1),
+                          color: AppColors.primary.withAlpha(26),
                           child: const Padding(
                             padding: EdgeInsets.all(AppSpacing.md),
                             child: Row(
@@ -186,7 +185,7 @@ class _ManagePricingScreenState extends State<ManagePricingScreen> {
                               leading: Container(
                                 padding: const EdgeInsets.all(AppSpacing.sm),
                                 decoration: BoxDecoration(
-                                  color: AppColors.primary.withOpacity(0.1),
+                                  color: AppColors.primary.withAlpha(26),
                                   borderRadius: BorderRadius.circular(
                                       AppBorderRadius.md),
                                 ),
@@ -280,7 +279,7 @@ class _ManagePricingScreenState extends State<ManagePricingScreen> {
               vertical: AppSpacing.xs,
             ),
             decoration: BoxDecoration(
-              color: color.withOpacity(0.1),
+              color: color.withAlpha(26),
               borderRadius: BorderRadius.circular(AppBorderRadius.sm),
             ),
             child: Text(

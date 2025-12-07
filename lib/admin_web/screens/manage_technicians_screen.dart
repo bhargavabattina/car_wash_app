@@ -1,3 +1,4 @@
+import 'package:car_wash_app/shared/utils/routes.dart';
 import 'package:flutter/material.dart';
 import '../../shared/utils/constants.dart';
 import '../../shared/utils/helpers.dart';
@@ -126,8 +127,8 @@ class _ManageTechniciansScreenState extends State<ManageTechniciansScreen> {
                                 ),
                                 decoration: BoxDecoration(
                                   color: technician.isActive
-                                      ? AppColors.success.withOpacity(0.1)
-                                      : AppColors.error.withOpacity(0.1),
+                                      ? AppColors.success.withAlpha(26)
+                                      : AppColors.error.withAlpha(26),
                                   borderRadius: BorderRadius.circular(AppBorderRadius.sm),
                                 ),
                                 child: Text(
@@ -181,12 +182,14 @@ class _ManageTechniciansScreenState extends State<ManageTechniciansScreen> {
                                         technician.id,
                                         !technician.isActive,
                                       );
+                                      if (!mounted) return;
                                       Helpers.showSnackBar(
                                         context,
                                         'Technician ${technician.isActive ? "deactivated" : "activated"} successfully',
                                       );
                                       _loadTechnicians();
                                     } catch (e) {
+                                      if (!mounted) return;
                                       Helpers.showSnackBar(
                                         context,
                                         'Failed to update status',
@@ -203,12 +206,14 @@ class _ManageTechniciansScreenState extends State<ManageTechniciansScreen> {
                                         try {
                                           await _firestoreService
                                               .deleteTechnician(technician.id);
+                                          if (!mounted) return;
                                           Helpers.showSnackBar(
                                             context,
                                             'Technician deleted successfully',
                                           );
                                           _loadTechnicians();
                                         } catch (e) {
+                                          if (!mounted) return;
                                           Helpers.showSnackBar(
                                             context,
                                             'Failed to delete technician',

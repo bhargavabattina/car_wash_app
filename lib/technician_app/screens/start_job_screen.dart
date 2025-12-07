@@ -6,6 +6,7 @@ import '../../shared/utils/helpers.dart';
 import '../../shared/widgets/custom_button.dart';
 import '../../shared/providers/technician_provider.dart';
 import '../../shared/providers/booking_provider.dart';
+import '../../shared/utils/routes.dart';
 
 class StartJobScreen extends StatefulWidget {
   const StartJobScreen({super.key});
@@ -29,21 +30,19 @@ class _StartJobScreenState extends State<StartJobScreen> {
       await bookingProvider.updateBookingStatus(booking.id, 'in_progress');
       await technicianProvider.loadTechnicianJobs(booking.technicianId!);
 
-      if (mounted) {
-        Helpers.showSnackBar(context, 'Job started successfully!');
-        Navigator.pushReplacementNamed(
-          context,
-          AppRoutes.uploadPhotos,
-          arguments: booking.id,
-        );
-      }
+      if (!mounted) return;
+      Helpers.showSnackBar(context, 'Job started successfully!');
+      Navigator.pushReplacementNamed(
+        context,
+        AppRoutes.uploadPhotos,
+        arguments: booking.id,
+      );
     } catch (e) {
-      if (mounted) {
-        Helpers.showSnackBar(context, 'Failed to start job', isError: true);
-        setState(() {
-          _isStarting = false;
-        });
-      }
+      if (!mounted) return;
+      Helpers.showSnackBar(context, 'Failed to start job', isError: true);
+      setState(() {
+        _isStarting = false;
+      });
     }
   }
 

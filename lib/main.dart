@@ -1,5 +1,11 @@
+import 'package:car_wash_app/customer_app/screens/booking_confirmation_screen.dart';
+import 'package:car_wash_app/customer_app/screens/booking_tracking_screen.dart';
+import 'package:car_wash_app/customer_app/screens/select_date_time_screen.dart';
+import 'package:car_wash_app/customer_app/screens/select_location_screen.dart';
+import 'package:car_wash_app/shared/utils/routes.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 import 'admin_web/admin_app.dart';
 import 'customer_app/customer_app.dart';
@@ -9,7 +15,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // Initialize Firebase
-  // await Firebase.initializeApp();
+  await Firebase.initializeApp();
 
   runApp(const MyApp());
 }
@@ -41,70 +47,79 @@ class AppSelector extends StatelessWidget {
         useMaterial3: true,
       ),
       home: Scaffold(
-        body: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [
-                Colors.blue[400]!,
-                Colors.purple[400]!,
-              ],
+        body: Builder(builder: (context) {
+          return Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [
+                  Colors.blue[400]!,
+                  Colors.purple[400]!,
+                ],
+              ),
             ),
-          ),
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Icon(
-                  Icons.local_car_wash,
-                  size: 80,
-                  color: Colors.white,
-                ),
-                const SizedBox(height: 16),
-                const Text(
-                  'Car Wash App',
-                  style: TextStyle(
-                    fontSize: 32,
-                    fontWeight: FontWeight.bold,
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Icon(
+                    Icons.local_car_wash,
+                    size: 80,
                     color: Colors.white,
                   ),
-                ),
-                const SizedBox(height: 48),
-                _buildAppButton(
-                  context,
-                  'Customer App',
-                  'Book car wash services',
-                  Icons.person,
-                  Colors.blue,
-                  () {
-                    Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(
-                        builder: (context) => const CustomerMobileApp(),
-                      ),
-                    );
-                  },
-                ),
-                const SizedBox(height: 16),
-                _buildAppButton(
-                  context,
-                  'Technician App',
-                  'Manage your jobs',
-                  Icons.work,
-                  Colors.orange,
-                  () {
-                    Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(
-                        builder: (context) => const TechnicianMobileApp(),
-                      ),
-                    );
-                  },
-                ),
-              ],
+                  const SizedBox(height: 16),
+                  const Text(
+                    'Car Wash App',
+                    style: TextStyle(
+                      fontSize: 32,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                  const SizedBox(height: 48),
+                  _buildAppButton(
+                    context,
+                    'Customer App',
+                    'Book car wash services',
+                    Icons.person,
+                    Colors.blue,
+                    () {
+                      Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(
+                          builder: (context) => const CustomerMobileApp(),
+                        ),
+                      );
+                    },
+                  ),
+                  const SizedBox(height: 16),
+                  _buildAppButton(
+                    context,
+                    'Technician App',
+                    'Manage your jobs',
+                    Icons.work,
+                    Colors.orange,
+                    () {
+                      Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(
+                          builder: (context) => const TechnicianMobileApp(),
+                        ),
+                      );
+                    },
+                  ),
+                ],
+              ),
             ),
-          ),
-        ),
+          );
+        }),
       ),
+      routes: {
+        AppRoutes.selectDateTime: (context) => const SelectDateTimeScreen(),
+        AppRoutes.selectLocation: (context) => const SelectLocationScreen(),
+        AppRoutes.bookingConfirmation: (context) =>
+            const BookingConfirmationScreen(),
+        AppRoutes.bookingTracking: (context) => const BookingTrackingScreen(),
+      },
     );
   }
 
@@ -137,7 +152,7 @@ class AppSelector extends StatelessWidget {
               width: 60,
               height: 60,
               decoration: BoxDecoration(
-                color: color.withOpacity(0.1),
+                color: color.withAlpha(25),
                 borderRadius: BorderRadius.circular(15),
               ),
               child: Icon(icon, size: 32, color: color),

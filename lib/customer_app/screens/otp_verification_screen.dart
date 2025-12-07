@@ -1,3 +1,4 @@
+import 'package:car_wash_app/shared/utils/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
@@ -38,12 +39,11 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
 
       final success = await authProvider.verifyOTP(_otpController.text, _name, 'customer');
 
-      if (mounted) {
-        if (success) {
-          Navigator.pushReplacementNamed(context, AppRoutes.customerHome);
-        } else {
-          Helpers.showSnackBar(context, 'Invalid OTP. Please try again.', isError: true);
-        }
+      if (!mounted) return;
+      if (success) {
+        Navigator.pushReplacementNamed(context, AppRoutes.customerHome);
+      } else {
+        Helpers.showSnackBar(context, 'Invalid OTP. Please try again.', isError: true);
       }
     }
   }

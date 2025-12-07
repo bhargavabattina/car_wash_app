@@ -1,3 +1,4 @@
+import 'package:car_wash_app/shared/utils/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../shared/utils/constants.dart';
@@ -31,20 +32,18 @@ class _LoginScreenState extends State<LoginScreen> {
 
       try {
         await authProvider.sendOTP(_phoneController.text);
-        if (mounted) {
-          Navigator.pushNamed(
-            context,
-            AppRoutes.otpVerification,
-            arguments: {
-              'phone': _phoneController.text,
-              'name': _nameController.text,
-            },
-          );
-        }
+        if (!mounted) return;
+        Navigator.pushNamed(
+          context,
+          AppRoutes.otpVerification,
+          arguments: {
+            'phone': _phoneController.text,
+            'name': _nameController.text,
+          },
+        );
       } catch (e) {
-        if (mounted) {
-          Helpers.showSnackBar(context, e.toString(), isError: true);
-        }
+        if (!mounted) return;
+        Helpers.showSnackBar(context, e.toString(), isError: true);
       }
     }
   }

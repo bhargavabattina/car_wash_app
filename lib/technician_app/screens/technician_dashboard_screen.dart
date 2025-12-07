@@ -4,6 +4,7 @@ import '../../shared/utils/constants.dart';
 import '../../shared/widgets/booking_card.dart';
 import '../../shared/providers/auth_provider.dart';
 import '../../shared/providers/technician_provider.dart';
+import '../../shared/utils/routes.dart';
 
 class TechnicianDashboardScreen extends StatefulWidget {
   const TechnicianDashboardScreen({super.key});

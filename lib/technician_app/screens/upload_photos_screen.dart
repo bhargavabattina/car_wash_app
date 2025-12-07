@@ -7,6 +7,7 @@ import '../../shared/utils/helpers.dart';
 import '../../shared/widgets/custom_button.dart';
 import '../../shared/providers/booking_provider.dart';
 import '../../shared/providers/technician_provider.dart';
+import '../../shared/utils/routes.dart';
 
 class UploadPhotosScreen extends StatefulWidget {
   const UploadPhotosScreen({super.key});
@@ -37,6 +38,7 @@ class _UploadPhotosScreenState extends State<UploadPhotosScreen> {
 
   Future<void> _submitAndComplete(String bookingId) async {
     if (_beforePhotos.isEmpty || _afterPhotos.isEmpty) {
+      if (!mounted) return;
       Helpers.showSnackBar(
         context,
         'Please upload both before and after photos',
@@ -62,25 +64,23 @@ class _UploadPhotosScreenState extends State<UploadPhotosScreen> {
         await technicianProvider.loadTechnicianJobs(booking.technicianId!);
       }
 
-      if (mounted) {
-        Helpers.showSnackBar(context, 'Job completed successfully!');
-        Navigator.pushNamedAndRemoveUntil(
-          context,
-          AppRoutes.technicianDashboard,
-          (route) => false,
-        );
-      }
+      if (!mounted) return;
+      Helpers.showSnackBar(context, 'Job completed successfully!');
+      Navigator.pushNamedAndRemoveUntil(
+        context,
+        AppRoutes.technicianDashboard,
+        (route) => false,
+      );
     } catch (e) {
-      if (mounted) {
-        Helpers.showSnackBar(
-          context,
-          'Failed to upload photos. Please try again.',
-          isError: true,
-        );
-        setState(() {
-          _isUploading = false;
-        });
-      }
+      if (!mounted) return;
+      Helpers.showSnackBar(
+        context,
+        'Failed to upload photos. Please try again.',
+        isError: true,
+      );
+      setState(() {
+        _isUploading = false;
+      });
     }
   }
 

@@ -4,6 +4,7 @@ import '../../shared/models/service_model.dart';
 import '../../shared/models/car_model.dart';
 import '../../shared/utils/constants.dart';
 import '../../shared/widgets/custom_button.dart';
+import '../../shared/utils/routes.dart';
 
 class BookingSummaryScreen extends StatelessWidget {
   const BookingSummaryScreen({super.key});

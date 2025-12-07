@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../shared/utils/constants.dart';
 import '../../shared/utils/helpers.dart';
-import '../../shared/widgets/custom_button.dart';
 import '../../shared/widgets/custom_input.dart';
 import '../../shared/services/firestore_service.dart';
 import '../../shared/models/service_model.dart';
@@ -148,19 +147,17 @@ class _ManageServicesScreenState extends State<ManageServicesScreen> {
 
               try {
                 await _firestoreService.createService(service);
-                if (mounted) {
-                  Navigator.pop(context);
-                  Helpers.showSnackBar(context, 'Service added successfully!');
-                  _loadServices();
-                }
+                if (!mounted) return;
+                Navigator.pop(context);
+                Helpers.showSnackBar(context, 'Service added successfully!');
+                _loadServices();
               } catch (e) {
-                if (mounted) {
-                  Helpers.showSnackBar(
-                    context,
-                    'Failed to add service: ${e.toString()}',
-                    isError: true,
-                  );
-                }
+                if (!mounted) return;
+                Helpers.showSnackBar(
+                  context,
+                  'Failed to add service: ${e.toString()}',
+                  isError: true,
+                );
               }
             },
             child: const Text('Add Service'),
@@ -290,19 +287,17 @@ class _ManageServicesScreenState extends State<ManageServicesScreen> {
                     'isActive': isActive,
                   });
 
-                  if (mounted) {
-                    Navigator.pop(context);
-                    Helpers.showSnackBar(context, 'Service updated successfully!');
-                    _loadServices();
-                  }
+                  if (!mounted) return;
+                  Navigator.pop(context);
+                  Helpers.showSnackBar(context, 'Service updated successfully!');
+                  _loadServices();
                 } catch (e) {
-                  if (mounted) {
-                    Helpers.showSnackBar(
-                      context,
-                      'Failed to update service: ${e.toString()}',
-                      isError: true,
-                    );
-                  }
+                  if (!mounted) return;
+                  Helpers.showSnackBar(
+                    context,
+                    'Failed to update service: ${e.toString()}',
+                    isError: true,
+                  );
                 }
               },
               child: const Text('Update'),
@@ -321,9 +316,11 @@ class _ManageServicesScreenState extends State<ManageServicesScreen> {
       onConfirm: () async {
         try {
           await _firestoreService.deleteService(service.id);
+          if (!mounted) return;
           Helpers.showSnackBar(context, 'Service deleted successfully!');
           _loadServices();
         } catch (e) {
+          if (!mounted) return;
           Helpers.showSnackBar(
             context,
             'Failed to delete service: ${e.toString()}',
@@ -390,7 +387,7 @@ class _ManageServicesScreenState extends State<ManageServicesScreen> {
                           leading: Container(
                             padding: const EdgeInsets.all(AppSpacing.sm),
                             decoration: BoxDecoration(
-                              color: AppColors.primary.withOpacity(0.1),
+                              color: AppColors.primary.withAlpha(26),
                               borderRadius:
                                   BorderRadius.circular(AppBorderRadius.md),
                             ),
@@ -419,8 +416,8 @@ class _ManageServicesScreenState extends State<ManageServicesScreen> {
                                 ),
                                 decoration: BoxDecoration(
                                   color: service.isActive
-                                      ? AppColors.success.withOpacity(0.1)
-                                      : AppColors.error.withOpacity(0.1),
+                                      ? AppColors.success.withAlpha(26)
+                                      : AppColors.error.withAlpha(26),
                                   borderRadius:
                                       BorderRadius.circular(AppBorderRadius.sm),
                                 ),

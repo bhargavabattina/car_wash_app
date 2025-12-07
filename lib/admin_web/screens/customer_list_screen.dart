@@ -66,7 +66,7 @@ class _CustomerListScreenState extends State<CustomerListScreen> {
                     children: [
                       Container(
                         padding: const EdgeInsets.all(AppSpacing.md),
-                        color: AppColors.primary.withOpacity(0.1),
+                        color: AppColors.primary.withAlpha(26),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [

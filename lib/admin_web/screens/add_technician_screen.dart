@@ -30,39 +30,38 @@ class _AddTechnicianScreenState extends State<AddTechnicianScreen> {
   }
 
   Future<void> _addTechnician() async {
-    if (_formKey.currentState!.validate()) {
-      setState(() => _isLoading = true);
+    if (!_formKey.currentState!.validate()) {
+      return;
+    }
+    setState(() => _isLoading = true);
 
-      final technician = UserModel(
-        id: DateTime.now().millisecondsSinceEpoch.toString(),
-        name: _nameController.text.trim(),
-        phone: '+91${_phoneController.text.trim()}',
-        email: _emailController.text.trim(),
-        userType: 'technician',
-        createdAt: DateTime.now(),
-        isActive: true,
+    final technician = UserModel(
+      id: DateTime.now().millisecondsSinceEpoch.toString(),
+      name: _nameController.text.trim(),
+      phone: '+91${_phoneController.text.trim()}',
+      email: _emailController.text.trim(),
+      userType: 'technician',
+      createdAt: DateTime.now(),
+      isActive: true,
+    );
+
+    try {
+      await _firestoreService.createTechnician(technician);
+
+      if (!mounted) return;
+      Helpers.showSnackBar(
+        context,
+        'Technician added successfully! They can now login with phone: ${_phoneController.text}',
       );
-
-      try {
-        await _firestoreService.createTechnician(technician);
-
-        if (mounted) {
-          Helpers.showSnackBar(
-            context,
-            'Technician added successfully! They can now login with phone: ${_phoneController.text}',
-          );
-          Navigator.pop(context, true);
-        }
-      } catch (e) {
-        if (mounted) {
-          setState(() => _isLoading = false);
-          Helpers.showSnackBar(
-            context,
-            'Failed to add technician: ${e.toString()}',
-            isError: true,
-          );
-        }
-      }
+      Navigator.pop(context, true);
+    } catch (e) {
+      if (!mounted) return;
+      setState(() => _isLoading = false);
+      Helpers.showSnackBar(
+        context,
+        'Failed to add technician: ${e.toString()}',
+        isError: true,
+      );
     }
   }
 
@@ -157,7 +156,7 @@ class _AddTechnicianScreenState extends State<AddTechnicianScreen> {
               ),
               const SizedBox(height: AppSpacing.xl),
               Card(
-                color: AppColors.primary.withOpacity(0.05),
+                color: AppColors.primary.withAlpha(13),
                 child: Padding(
                   padding: const EdgeInsets.all(AppSpacing.md),
                   child: Column(

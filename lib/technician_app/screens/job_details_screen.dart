@@ -5,6 +5,7 @@ import '../../shared/models/booking_model.dart';
 import '../../shared/utils/constants.dart';
 import '../../shared/widgets/custom_button.dart';
 import '../../shared/providers/technician_provider.dart';
+import '../../shared/utils/routes.dart';
 
 class JobDetailsScreen extends StatelessWidget {
   const JobDetailsScreen({super.key});
